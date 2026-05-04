@@ -96,6 +96,8 @@ Este padrão **não deve** ser usado quando:
 1. **Causar um Modelo de Domínio Anêmico:** Se você fabricar classes (Serviços) para calcular regras de negócio básicas que deveriam estar dentro das próprias entidades, suas classes principais se tornarão meros recipientes de *getters/setters*.
 
 2. **O *Information Expert* for suficiente:** Se a tarefa envolve apenas manipular o estado interno da própria classe sem depender de recursos externos (ex: calcular o total do carrinho), deixe o método na própria classe.
+
+
 **Exemplo 1**
 ```
 // Entidade Anêmica (só tem dados, não tem comportamento)
@@ -160,7 +162,34 @@ public class Cliente {
 ```
 ---
 
-## 📚 6. Fontes e Referências
+## 🔎 6. Como identificar um Pure Fabrication em um projeto real?
+
+Para exemplificar, vamos analisar a estrutura de código de um projeto real em Java. Acesse o diretório base do projeto **OrcamentoPessoal** no link abaixo:
+
+🔗 **[Repositório: OrcamentoPessoal - Pacote Base](https://github.com/GuilhermePereiraS/OrcamentoPessoal/tree/main/src/main/java/br/com/porquinho)**
+
+Ao navegar pelas pastas desse projeto (ou de qualquer outro sistema corporativo), você pode identificar rapidamente quais arquivos são **Pure Fabrications** aplicando este *checklist* de 4 passos:
+
+ 1. O Teste do "Mundo Real" (Vocabulário)
+Em um sistema de controle financeiro, entidades como `Despesa`, `Receita`, `Categoria` e `Usuario` representam o domínio. Elas "existem" na vida real. 
+Se você abrir uma pasta e esbarrar em um arquivo como `DespesaRepository` ou `AutenticacaoService`, pergunte-se: *"Isso existe no mundo real das finanças?"*. Como a resposta é **não**, você acabou de encontrar uma Invenção Pura.
+
+ 2. A Regra dos Sufixos
+Por convenção da engenharia de software, desenvolvedores nomeiam essas classes artificiais com sufixos técnicos para facilitar a identificação. Procure por arquivos que terminam com:
+* `...Repository` ou `...DAO` (Fabricados para acessar o banco de dados)
+* `...Service` (Fabricados para orquestrar lógicas complexas e integrações)
+* `...Controller` (Fabricados para receber requisições de telas ou APIs)
+* `...Mapper` (Fabricados para converter formatos de dados)
+
+ 3. Olhe os "Imports" (Infraestrutura)
+Se você abrir o arquivo e olhar o topo dele, uma classe de domínio terá importações simples (como `java.util.List` ou `java.time.LocalDate`). 
+Já um *Pure Fabrication* costuma ter importações pesadas de infraestrutura e frameworks, como bibliotecas de SQL (`java.sql.*`), anotações do Spring Boot (`org.springframework.*`) ou bibliotecas de rede.
+
+ 4. Análise de Atributos (Estado vs Dependências)
+* **A Classe de Domínio:** Guarda o *estado* do negócio. Seus atributos são informações reais (ex: `String descricao`, `double valor`).
+* **A Classe Fabricada:** Guarda *dependências*. Seus atributos geralmente são ferramentas ou outras classes fabricadas (ex: `DatabaseConnection db`, `EmailSender sender`).
+
+## 📚 7. Fontes e Referências
 
 * **Refactoring Guru - O que é um Padrão de Projeto?**
   [https://refactoring.guru/pt-br/design-patterns/what-is-pattern](https://refactoring.guru/pt-br/design-patterns/what-is-pattern)
