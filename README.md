@@ -26,6 +26,7 @@ Na teoria GRASP, a regra de ouro é o **Information Expert**: "A classe que tem 
 A aplicação ocorre através da **delegação**. Veja a diferença estrutural entre um código engessado e um código que utiliza o padrão:
 
 // 🚨 ERRO: Violação do Princípio da Responsabilidade Única (SRP)
+```
 public class Pedido {
     private String cliente;
     private double valorTotal;
@@ -41,7 +42,7 @@ public class Pedido {
         System.out.println("Executando INSERT INTO pedidos...");
     }
 }
-
+```
 ### ✅ O Design Limpo (Com Pure Fabrication)
 A classe de domínio fica isolada, e inventamos classes novas apenas para lidar com a infraestrutura.
 
