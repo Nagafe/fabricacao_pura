@@ -164,10 +164,6 @@ public class Cliente {
 
 ## 🔎 6. Como identificar um Pure Fabrication em um projeto real?
 
-Para exemplificar, vamos analisar a estrutura de código de um projeto real em Java. Acesse o diretório base do projeto **OrcamentoPessoal** no link abaixo:
-
-🔗 **[Repositório: OrcamentoPessoal - Pacote Base](https://github.com/GuilhermePereiraS/OrcamentoPessoal/tree/main/src/main/java/br/com/porquinho)**
-
 Ao navegar pelas pastas desse projeto (ou de qualquer outro sistema corporativo), você pode identificar rapidamente quais arquivos são **Pure Fabrications** aplicando este *checklist* de 4 passos:
 
  1. O Teste do "Mundo Real" (Vocabulário)
@@ -188,6 +184,12 @@ Já um *Pure Fabrication* costuma ter importações pesadas de infraestrutura e 
  4. Análise de Atributos (Estado vs Dependências)
 * **A Classe de Domínio:** Guarda o *estado* do negócio. Seus atributos são informações reais (ex: `String descricao`, `double valor`).
 * **A Classe Fabricada:** Guarda *dependências*. Seus atributos geralmente são ferramentas ou outras classes fabricadas (ex: `DatabaseConnection db`, `EmailSender sender`).
+
+Para exemplificar, vamos analisar a estrutura de código de um projeto real em Java. Acessando o diretório base do projeto **OrcamentoPessoal** no link abaixo:
+
+🔗 **[Repositório: OrcamentoPessoal - Pacote Base](https://github.com/GuilhermePereiraS/OrcamentoPessoal/tree/main/src/main/java/br/com/porquinho)**
+
+--
 
 ## 📚 7. Fontes e Referências
 
