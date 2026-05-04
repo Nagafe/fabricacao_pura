@@ -52,10 +52,16 @@ public class Pedido {
     }
 
     // 🚨 Misturando domínio com infraestrutura
-    // Alta acoplagem com o banco e serviço de e-mail!
-    public void salvarNoBancoDeDados() {
+    // Alta acoplagem com o banco E com o serviço de e-mail!
+    public void finalizarPedido(String emailDestino) {
+        
+        // 1. Lógica de Banco de Dados (Deveria estar no Repository)
         System.out.println("Conectando ao banco MySQL...");
         System.out.println("Executando INSERT INTO pedidos...");
+
+        // 2. Lógica de E-mail (Deveria estar no Service)
+        System.out.println("Autenticando no servidor SMTP...");
+        System.out.println("Enviando recibo para: " + emailDestino);
     }
 }
 ```
