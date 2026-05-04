@@ -25,8 +25,9 @@ Na teoria GRASP, a regra de ouro é o **Information Expert**: "A classe que tem 
 
 A aplicação ocorre através da **delegação**. Veja a diferença estrutural entre um código engessado e um código que utiliza o padrão:
 
-// 🚨 ERRO: Violação do Princípio da Responsabilidade Única (SRP)
+
 ```
+// 🚨 ERRO: Violação do Princípio da Responsabilidade Única (SRP)
 public class Pedido {
     private String cliente;
     private double valorTotal;
