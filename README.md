@@ -1,9 +1,14 @@
-# 🛠️ Entendendo o GRASP(General Responsibility Assignment Software Patterns): Pure Fabrication (Fabricação Pura)
 
 
+# 🛠️ Apresentação: Pure Fabrication (Fabricação Pura)
+Instituto Federal de Educação e Ciência e Tecnologia de Mato Grosso
+Alunos: Nagafe de Oliveira Martins, Guilherme P. Silva
+Disciplina: Projeto de Software
+Professor: Orlando
 
-## 📌 1. O que é?
-O **Pure Fabrication** (Fabricação Pura) é um padrão de atribuição de responsabilidades do GRASP focado na criação de classes técnicas altamente especializadas. 
+
+## 📌 1. O que é Pure Fabrication?
+O **Pure Fabrication** (Fabricação Pura) é um padrão de atribuição de responsabilidades do GRASP(General Responsibility Assignment Software Patterns) focado na criação de classes técnicas altamente especializadas. 
 
 Em vez de sobrecarregar as entidades centrais do sistema com múltiplas tarefas, o desenvolvedor "fabrica" (cria) novas classes cujo único propósito é agrupar comportamentos sistêmicos, de infraestrutura ou lógicas complexas de coordenação. Como essas classes não representam conceitos do "mundo real" do negócio, elas são chamadas de Fabricações Puras.
 
