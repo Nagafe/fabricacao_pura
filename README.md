@@ -1,10 +1,10 @@
 
 
 # 🛠️ Apresentação: Pure Fabrication (Fabricação Pura)
-Instituto Federal de Educação e Ciência e Tecnologia de Mato Grosso
-Alunos: Nagafe de Oliveira Martins, Guilherme P. Silva
-Disciplina: Projeto de Software
-Professor: Orlando
+#Instituto Federal de Educação e Ciência e Tecnologia de Mato Grosso
+#Alunos: Nagafe de Oliveira Martins, Guilherme P. Silva
+#Disciplina: Projeto de Software
+#Professor: Orlando
 
 
 ## 📌 1. O que é Pure Fabrication?
