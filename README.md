@@ -1,8 +1,6 @@
 # 🛠️ Entendendo o GRASP(General Responsibility Assignment Software Patterns): Pure Fabrication (Fabricação Pura)
 
-Este repositório é uma demonstração prática em Java e uma fundamentação teórica de como o padrão arquitetural **Pure Fabrication** ajuda a manter um código limpo, coeso e desacoplado.
 
----
 
 ## 📌 1. O que é?
 O **Pure Fabrication** (Fabricação Pura) é um padrão de atribuição de responsabilidades do GRASP focado na criação de classes técnicas altamente especializadas. 
