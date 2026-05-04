@@ -95,10 +95,9 @@ O Pure Fabrication é a engrenagem que faz outros princípios funcionarem na pr�
 Este padrão **não deve** ser usado quando:
 1. **Causar um Modelo de Domínio Anêmico:** Se você fabricar classes (Serviços) para calcular regras de negócio básicas que deveriam estar dentro das próprias entidades, suas classes principais se tornarão meros recipientes de *getters/setters*.
 
-2. **O *Information Expert* for suficiente:** Se a tarefa envolve apenas manipular o estado interno da própria classe sem depender de recursos externos (ex: calcular o total do carrinho), deixe o método na própria classe.
+**Exemplo**
 
-
-**Exemplo 1**
+**❌ Erro(Uso indevido do Pure Fabricaction) causado por um Modelo de Domínio Anêmico**
 ```
 // Entidade Anêmica (só tem dados, não tem comportamento)
 public class Carrinho {
@@ -117,7 +116,9 @@ public class CalculadoraDeCarrinhoService {
     }
 }
 ```
+**✅ O CERTO (Usando o Information Expert):**
 
+Se o Carrinho tem os preços, a responsabilidade de somar é dele.
 ```
 public class Carrinho {
     private List<Double> precosDosItens = new ArrayList<>();
@@ -132,7 +133,8 @@ public class Carrinho {
     }
 }
 ```
-**Exemplo 2**
+
+2. **O *Information Expert* for suficiente:** Se a tarefa envolve apenas manipular o estado interno da própria classe sem depender de recursos externos (ex: calcular o total do carrinho), deixe o método na própria classe.
 
 ```
 public class Cliente {
@@ -149,6 +151,9 @@ public class FormatadorDeNomeDeCliente {
 }
 ```
 
+**✅ O CERTO (Usando o Information Expert):**
+
+A classe Cliente tem o nome e o sobrenome, logo, ela formata a si mesma.
 ```
 public class Cliente {
     private String nome;
