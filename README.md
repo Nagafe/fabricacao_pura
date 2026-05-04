@@ -196,5 +196,4 @@ Já um *Pure Fabrication* costuma ter importações pesadas de infraestrutura e 
 * **Medium - Pure Fabrication in Software Design (por Safonov B2C):**
   [https://medium.com/@safonovb2c/pure-fabrication-in-software-design-bd4c7ce34bf7](https://medium.com/@safonovb2c/pure-fabrication-in-software-design-bd4c7ce34bf7)
 
-### ❌ A armadilha do Information Expert (Sem Pure Fabrication)
-A classe tenta fazer tudo sozinha, apenas porque "possui os dados".
+
