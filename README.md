@@ -48,7 +48,7 @@ public class Pedido {
 A classe de domínio fica isolada, e inventamos classes novas apenas para lidar com a infraestrutura.
 
 **O Domínio:**
-
+```
 // 🟢 Domínio limpo e focado. Não sabe o que é Banco de Dados ou Internet.
 public class Pedido {
     private String cliente;
@@ -58,17 +58,19 @@ public class Pedido {
         this.valorTotal -= (this.valorTotal * percentual);
     }
 }
+```
 
 
 **As Fabricações Puras (Pure Fabrications):**
-
+```
 // 🟢 PURE FABRICATION 1: Repositório (Lidando com Persistência)
 public class PedidoRepository {
     public void salvar(Pedido pedido) {
         System.out.println("[Banco de Dados] Abrindo conexão e salvando pedido...");
     }
 }
-
+```
+```
 // 🟢 PURE FABRICATION 2: Serviço (Lidando com Integrações)
 public class EmailNotificationService {
     private String servidorSmtp = "smtp.servidor.com";
@@ -78,7 +80,7 @@ public class EmailNotificationService {
         System.out.println("[E-mail] Enviando recibo para: " + emailDestino);
     }
 }
-
+```
 
 ---
 
@@ -92,8 +94,70 @@ O Pure Fabrication é a engrenagem que faz outros princípios funcionarem na pr�
 ## 🚫 5. Restrições (Quando NÃO usar)
 Este padrão **não deve** ser usado quando:
 1. **Causar um Modelo de Domínio Anêmico:** Se você fabricar classes (Serviços) para calcular regras de negócio básicas que deveriam estar dentro das próprias entidades, suas classes principais se tornarão meros recipientes de *getters/setters*.
-2. **O *Information Expert* for suficiente:** Se a tarefa envolve apenas manipular o estado interno da própria classe sem depender de recursos externos (ex: calcular o total do carrinho), deixe o método na própria classe.
 
+2. **O *Information Expert* for suficiente:** Se a tarefa envolve apenas manipular o estado interno da própria classe sem depender de recursos externos (ex: calcular o total do carrinho), deixe o método na própria classe.
+**Exemplo 1**
+```
+// Entidade Anêmica (só tem dados, não tem comportamento)
+public class Carrinho {
+    public List<Double> precosDosItens = new ArrayList<>();
+}
+
+// 🚨 Fabricação Pura Desnecessária! 
+// Roubou a regra de negócio que pertencia ao Carrinho.
+public class CalculadoraDeCarrinhoService {
+    public double calcularTotal(Carrinho carrinho) {
+        double total = 0;
+        for(Double preco : carrinho.precosDosItens) {
+            total += preco;
+        }
+        return total;
+    }
+}
+```
+
+```
+public class Carrinho {
+    private List<Double> precosDosItens = new ArrayList<>();
+
+    // O Carrinho é o Especialista da Informação aqui. Não precisamos de Serviços.
+    public double calcularTotal() {
+        double total = 0;
+        for(Double preco : this.precosDosItens) {
+            total += preco;
+        }
+        return total;
+    }
+}
+```
+**Exemplo 2**
+
+```
+public class Cliente {
+    public String nome;
+    public String sobrenome;
+}
+
+// 🚨 Fabricação Pura Desnecessária!
+// Não há complexidade técnica de infraestrutura que justifique criar essa classe.
+public class FormatadorDeNomeDeCliente {
+    public String gerarNomeCompleto(Cliente cliente) {
+        return cliente.nome + " " + cliente.sobrenome;
+    }
+}
+```
+
+```
+public class Cliente {
+    private String nome;
+    private String sobrenome;
+
+    // A própria classe resolve o problema sem ferir regras de arquitetura.
+    public String getNomeCompleto() {
+        return this.nome + " " + this.sobrenome;
+    }
+}
+```
 ---
 
 ## 📚 6. Fontes e Referências
