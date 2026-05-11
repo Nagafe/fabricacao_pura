@@ -13,18 +13,6 @@
 ## 📌 1. O que é Pure Fabrication?
 O **Pure Fabrication** (Fabricação Pura) é um padrão de atribuição de responsabilidades do GRASP(General Responsibility Assignment Software Patterns) focado na criação de classes técnicas altamente especializadas.
 
-**🧩 Os 9 Padrões GRASP**
-
-* **Information Expert** (Especialista na Informação)
-* **Creator** (Criador)
-* **Controller** (Controlador)
-* **Low Coupling** (Baixo Acoplamento)
-* **High Cohesion** (Alta Coesão)
-* **Polymorphism** (Polimorfismo)
-* **Pure Fabrication** (Fabricação Pura)
-* **Indirection** (Indireção)
-* **Protected Variations** (Variações Protegidas)
-
 Em vez de sobrecarregar as entidades centrais do sistema com múltiplas tarefas, o desenvolvedor "fabrica" (cria) novas classes cujo único propósito é agrupar comportamentos sistêmicos, de infraestrutura ou lógicas complexas de coordenação. Como essas classes não representam conceitos do "mundo real" do negócio, elas são chamadas de Fabricações Puras.
 
 ## ⚖️ 2. O Grande Dilema: O Embate com o "Information Expert"
