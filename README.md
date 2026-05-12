@@ -31,6 +31,14 @@ A aplicação ocorre através da **delegação**. Veja a diferença estrutural e
 
 ```
 // 🚨 ERRO: Violação do Princípio da Responsabilidade Única (SRP)
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import jakarta.mail.*;
+import jakarta.mail.internet.*;
+import java.util.Properties;
+
 public class Pedido {
     private String cliente;
     private double valorTotal;
